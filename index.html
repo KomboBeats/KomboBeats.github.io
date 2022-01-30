@@ -47,6 +47,31 @@
         }
 
     </script> -->
+    <script>
+        window.onclick = function(event) {
+            if (!event.target.matches('#latest-release-link') && event.target) {
+	            closeListenNowForm();
+            }
+        }
+    
+        function toggleListenNowForm() {
+            form_obj = document.getElementById("form-listen-now-popup");
+
+            if (form_obj.style.display=="block") {
+	            form_obj.style.display = "none";
+            } else {
+	            form_obj.style.display = "block";
+            }
+        }
+
+        function closeListenNowForm() {
+            form_obj = document.getElementById("form-listen-now-popup");
+
+            if (form_obj.style.display=="block") {
+	            form_obj.style.display = "none";
+            } 
+        }
+    </script>
 </head>
 <body>
     
@@ -60,7 +85,18 @@
         <img id="latest-release-header" src="assets/latestrelease.png">
         <img id="latest-release-img" src="assets/kombo-coverart.png">
         <p>Get'in High (feat. H.Hancho & Kombo)</p>
-        <a id="latest-release-link" href="https://open.spotify.com/album/2yYd1rw3QIiPgJbvgSF9bx">LISTEN NOW</a>
+        <!--<a id="latest-release-link" href="https://open.spotify.com/album/2yYd1rw3QIiPgJbvgSF9bx">LISTEN NOW</a>-->
+        <div>
+            <div id="form-listen-now-popup" style="display: none;">
+                <form class="form-container" onsubmit="return false;">
+                    <a id="latest-release-link-spotify" href="https://open.spotify.com/album/2yYd1rw3QIiPgJbvgSF9bx">Spotify</a>
+                    <a id="latest-release-link-apple-music" href="https://open.spotify.com/album/2yYd1rw3QIiPgJbvgSF9bx">Apple Music</a>
+                </form>
+            </div>
+            <a id="latest-release-link" style="display: block;" onclick="toggleListenNowForm()">LISTEN NOW</a>
+            <!--<button id="listen-now-button" onclick="toggleListenNowForm()">Listen Now</button>-->
+            
+        </div>
     </div>
 
 
@@ -346,6 +382,22 @@
     }   .sitesbysam {
         color: rgb(187, 187, 187);
         text-decoration: none;
+    }
+
+    #form-listen-now-popup {
+        display: none;
+        /* display: block; */
+        /* This must be absolute to allow the 
+        form to pop up over the other links*/
+        position: absolute;
+        /*display: inline-block;*/
+        /*position: fixed;	*/
+        border: 3px solid #f1f1f1;
+        margin-left: auto;
+        margin-right: auto;
+        height: 500px;
+        width: 100%;
+        /*margin: 0 auto;*/
     }
 </style>
 
